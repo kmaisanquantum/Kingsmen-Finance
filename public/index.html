@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingsmen Finance — Loan Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="logo-wrap">
+    <div class="logo-emblem"><span>K</span></div>
+    <div>
+      <div class="logo-text">Kingsmen Finance</div>
+      <div class="logo-sub">Underwriting & Loan Management System</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="status-dot" id="api-status" title="Checking API..."></div>
+    <div class="header-badge">Port Moresby, PNG</div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Est. 2024 · Digital Lending</div>
+    <h1 class="hero-title">Fast. Fair.<br><em>Fortnightly.</em></h1>
+    <p class="hero-sub">Personal loans from K100 to K2,500 — assessed in seconds using AI-powered document verification and real-time underwriting.</p>
+    <button class="btn-hero" onclick="document.getElementById('application').scrollIntoView({behavior:'smooth'})">
+      Apply Now →
+    </button>
+  </div>
+  <div class="hero-card">
+    <div class="hc-label">Interest Rate</div>
+    <div class="hc-value">20%</div>
+    <div class="hc-sub">per annum, reducing balance</div>
+    <div class="hc-divider"></div>
+    <div class="hc-row"><span>Min Amount</span><strong>K100</strong></div>
+    <div class="hc-row"><span>Max Amount</span><strong>K2,500</strong></div>
+    <div class="hc-row"><span>Repayments</span><strong>Fortnightly</strong></div>
+    <div class="hc-row"><span>Debt Ratio</span><strong>Max 30%</strong></div>
+  </div>
+</section>
+
+<!-- ── APPLICATION SECTION ── -->
+<section class="app-section" id="application">
+  <div class="section-heading">
+    <div class="section-tag">Step-by-Step Application</div>
+    <h2>Apply for a Personal Loan</h2>
+  </div>
+
+  <div class="app-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <!-- PANEL 1: Mode Toggle + Identity -->
+      <div class="panel" id="panel-identity">
+        <div class="panel-header">
+          <div class="panel-number">01</div>
+          <div>
+            <div class="panel-title">Applicant Details</div>
+            <div class="panel-desc">Identity & Income Verification</div>
+          </div>
+          <div class="ai-badge" id="ai-badge"><div class="ai-dot"></div><span id="ai-badge-text">AI-Ready</span></div>
+        </div>
+        <div class="panel-body">
+
+          <div class="mode-toggle">
+            <button class="mode-btn active" id="btn-ai" onclick="switchMode('ai')">
+              <span class="mode-icon">⚡</span> AI Extract
+            </button>
+            <button class="mode-btn" id="btn-manual" onclick="switchMode('manual')">
+              <span class="mode-icon">✎</span> Manual Entry
+            </button>
+          </div>
+
+          <!-- AI MODE -->
+          <div id="mode-ai" class="mode-section active">
+            <div class="info-box">
+              <strong>Upload documents</strong> — our AI will extract your name, document details, and net pay automatically. Documents are not stored.
+            </div>
+            <div class="field">
+              <label>PNG National ID or Passport</label>
+              <div class="upload-zone" id="zone-id">
+                <input type="file" id="file-id" accept="image/jpeg,image/png,image/webp,application/pdf" onchange="handleUpload('id')">
+                <div class="upload-content" id="upload-id-content">
+                  <div class="upload-icon">📄</div>
+                  <div class="upload-text">Click or drag to upload<br><span class="upload-hint">PNG NID · Passport · PDF</span></div>
+                </div>
+                <div class="upload-done" id="upload-id-done" style="display:none">
+                  <div class="upload-check">✓</div>
+                  <div class="upload-fname" id="fname-id"></div>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Latest Payslip</label>
+              <div class="upload-zone" id="zone-pay">
+                <input type="file" id="file-pay" accept="image/jpeg,image/png,image/webp,application/pdf" onchange="handleUpload('pay')">
+                <div class="upload-content" id="upload-pay-content">
+                  <div class="upload-icon">🧾</div>
+                  <div class="upload-text">Click or drag to upload<br><span class="upload-hint">Most recent payslip · PDF or image</span></div>
+                </div>
+                <div class="upload-done" id="upload-pay-done" style="display:none">
+                  <div class="upload-check">✓</div>
+                  <div class="upload-fname" id="fname-pay"></div>
+                </div>
+              </div>
+            </div>
+            <p class="field-hint">Files are processed in-memory and never stored on our servers.</p>
+          </div>
+
+          <!-- MANUAL MODE -->
+          <div id="mode-manual" class="mode-section">
+            <div class="field-row">
+              <div class="field">
+                <label>Full Legal Name *</label>
+                <input type="text" id="m-name" placeholder="As on NID/Passport">
+              </div>
+              <div class="field">
+                <label>Document Type</label>
+                <select id="m-doctype">
+                  <option value="PNG NID">PNG NID</option>
+                  <option value="Passport">Passport</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label>Document Number</label>
+                <input type="text" id="m-docnum" placeholder="e.g. NID-892341">
+              </div>
+              <div class="field">
+                <label>Document Expired?</label>
+                <select id="m-expired">
+                  <option value="false">No (Valid)</option>
+                  <option value="true">Yes (Expired)</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Employer / Organisation</label>
+              <input type="text" id="m-employer" placeholder="e.g. PNG Power Ltd">
+            </div>
+            <div class="field">
+              <label>Net Fortnightly Pay (PGK) *</label>
+              <div class="input-prefix">
+                <input type="number" id="m-netpay" placeholder="0.00" min="1" step="0.01">
+              </div>
+              <p class="field-hint">Take-home pay after all deductions — fortnightly</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+      <!-- PANEL 2: Loan Details -->
+      <div class="panel" id="panel-loan">
+        <div class="panel-header">
+          <div class="panel-number">02</div>
+          <div>
+            <div class="panel-title">Loan Request</div>
+            <div class="panel-desc">Amount, Term & Purpose</div>
+          </div>
+        </div>
+        <div class="panel-body">
+
+          <div class="field">
+            <label>Requested Amount (PGK)</label>
+            <div class="input-prefix">
+              <input type="number" id="loan-amount" placeholder="100 — 2,500" min="100" max="2500" step="1" oninput="liveCalc()">
+            </div>
+            <p class="field-hint">Minimum K100 · Maximum K2,500 per policy</p>
+          </div>
+
+          <div class="field">
+            <label>Repayment Term</label>
+            <select id="loan-term" onchange="liveCalc()">
+              <option value="4">4 Fortnights (~2 months)</option>
+              <option value="6">6 Fortnights (~3 months)</option>
+              <option value="8">8 Fortnights (~4 months)</option>
+              <option value="13">13 Fortnights (~6 months)</option>
+              <option value="26">26 Fortnights (~1 year)</option>
+              <option value="52">52 Fortnights (~2 years)</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Loan Purpose</label>
+            <select id="loan-purpose">
+              <option>Personal / Family Needs</option>
+              <option>Education & School Fees</option>
+              <option>Medical Expenses</option>
+              <option>Home Improvement</option>
+              <option>Vehicle / Transport</option>
+              <option>Business Capital</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <!-- Live Estimate Box -->
+          <div class="estimate-box" id="estimate-box">
+            <div class="est-label">Live Estimate</div>
+            <div class="est-grid">
+              <div class="est-item main">
+                <div class="est-key">Fortnightly Payment</div>
+                <div class="est-val" id="est-install">K—</div>
+              </div>
+              <div class="est-item">
+                <div class="est-key">Total Interest</div>
+                <div class="est-val dim" id="est-interest">K—</div>
+              </div>
+              <div class="est-item">
+                <div class="est-key">Total Repayable</div>
+                <div class="est-val dim" id="est-total">K—</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-submit" id="submit-btn" onclick="submitApplication()">
+            <span id="btn-text">Submit Application</span>
+            <div class="btn-loader" id="btn-loader">
+              <div class="dot-pulse"><span></span><span></span><span></span></div>
+            </div>
+          </button>
+
+          <p class="submit-note">By submitting, you consent to Kingsmen Finance assessing your application documents.</p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RESULT PANEL — full width -->
+    <div class="panel result-panel" id="result-panel" style="display:none;">
+      <div class="panel-header">
+        <div class="panel-number">03</div>
+        <div>
+          <div class="panel-title">Underwriting Decision</div>
+          <div class="panel-desc">Real-time Assessment Result</div>
+        </div>
+        <button class="btn-new" onclick="resetForm()">New Application</button>
+      </div>
+
+      <!-- Decision Banner -->
+      <div class="decision-banner" id="decision-banner">
+        <div class="decision-badge" id="decision-badge">—</div>
+        <div class="decision-meta">
+          <div class="decision-name" id="decision-name">—</div>
+          <div class="decision-msg" id="decision-msg">—</div>
+          <div class="decision-adjustments" id="decision-adjustments"></div>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="stats-row" id="stats-row"></div>
+
+      <!-- Profile + Extraction Info -->
+      <div class="info-panels" id="info-panels"></div>
+
+      <!-- Amortization Table -->
+      <div class="table-section" id="table-section" style="display:none;">
+        <div class="table-header">
+          <div class="table-title">Amortization Schedule</div>
+          <div class="table-subtitle">Reducing balance · 20% p.a. · PGK</div>
+        </div>
+        <div class="table-wrap">
+          <table id="amort-table">
+            <thead>
+              <tr>
+                <th class="tc">Period</th>
+                <th class="tr">Payment (K)</th>
+                <th class="tr">Interest (K)</th>
+                <th class="tr">Principal (K)</th>
+                <th class="tr">Balance (K)</th>
+                <th class="tr">Paid Down</th>
+              </tr>
+            </thead>
+            <tbody id="amort-body"></tbody>
+            <tfoot id="amort-foot"></tfoot>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-emblem sm"><span>K</span></div>
+      <div>
+        <div class="footer-name">Kingsmen Finance</div>
+        <div class="footer-sub">Port Moresby, Papua New Guinea</div>
+      </div>
+    </div>
+    <div class="footer-note">
+      © 2024 Kingsmen Finance. Personal loans only. Subject to credit assessment. <br>
+      Interest rate 20% p.a. reducing balance. Terms and conditions apply.
+    </div>
+  </div>
+</footer>
+
+<!-- ── TOAST ── -->
+<div id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
