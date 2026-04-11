@@ -1,5 +1,5 @@
 /**
- * Kingsmen Finance — Underwriting & Math Engine
+ * Our Finance — Underwriting & Math Engine
  * 20% p.a. reducing balance, fortnightly repayments
  */
 
@@ -171,14 +171,14 @@ function underwrite(params) {
 
 function buildMessage(decision, name, note, emi, principal) {
   if (decision === 'APPROVED') {
-    let msg = `Dear ${name}, congratulations! Your personal loan application has been approved by Kingsmen Finance. `;
+    let msg = `Dear ${name}, congratulations! Your infrastructure demonstration has been approved by Our Finance. `;
     if (note) msg += note + ' ';
     msg += `Your approved amount of K${principal?.toFixed(2)} will be disbursed promptly, with fortnightly repayments of K${emi?.toFixed(2)}. `;
-    msg += `We appreciate your trust in Kingsmen Finance and look forward to serving you. Welcome to the family.`;
+    msg += `We appreciate your interest in Our Finance and look forward to serving you. Welcome to the future of lending.`;
     return msg;
   } else {
     return `Dear ${name}, we regret to inform you that your loan application has been declined at this time. ${note} ` +
-      `We encourage you to contact our team for further guidance. Thank you for choosing Kingsmen Finance.`;
+      `We encourage you to contact our team for further guidance. Thank you for choosing Our Finance.`;
   }
 }
 
