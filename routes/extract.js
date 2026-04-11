@@ -52,7 +52,7 @@ router.post('/assess', upload.fields([
     const idB64 = idFile.buffer.toString('base64');
     const payB64 = payFile.buffer.toString('base64');
 
-    const prompt = `You are the Kingsmen Finance AI underwriting assistant in Port Moresby, Papua New Guinea.
+    const prompt = `You are the Our Finance AI underwriting assistant in Port Moresby, Papua New Guinea.
 
 Analyze the two documents provided:
 - Document 1: PNG National ID or Passport (identity document)

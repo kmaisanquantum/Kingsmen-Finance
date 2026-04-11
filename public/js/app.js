@@ -416,7 +416,7 @@ function renderResult(result) {
     tableSection.style.display = 'none';
   }
 
-  showToast(`Assessment complete — ${result.decision}`, result.decision === 'APPROVED' ? 'success' : 'error');
+  showToast(`Demo assessment complete — ${result.decision}`, result.decision === 'APPROVED' ? 'success' : 'error');
 }
 
 // ── RESET ──

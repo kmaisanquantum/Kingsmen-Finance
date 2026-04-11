@@ -50,7 +50,7 @@ app.use('/api/extract', extractRoutes);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    service: 'Kingsmen Finance API',
+    service: 'Our Finance API',
     version: '1.0.0',
     timestamp: new Date().toISOString(),
     ai_enabled: !!process.env.ANTHROPIC_API_KEY
@@ -73,7 +73,7 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`\n╔══════════════════════════════════════╗`);
-  console.log(`║   KINGSMEN FINANCE — LMS Server      ║`);
+  console.log(`║   OUR FINANCE — LMS Server      ║`);
   console.log(`║   Running on http://localhost:${PORT}   ║`);
   console.log(`║   AI Extraction: ${process.env.ANTHROPIC_API_KEY ? '✓ Enabled' : '✗ Disabled (no key)'}      ║`);
   console.log(`╚══════════════════════════════════════╝\n`);

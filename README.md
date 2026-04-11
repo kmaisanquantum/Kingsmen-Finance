@@ -1,4 +1,4 @@
-# Kingsmen Finance — Loan Management System
+# Our Finance — Loan Management System
 
 A full-stack web application for digital lending in Papua New Guinea. Built with Node.js/Express backend and a pure HTML/CSS/JS frontend.
 
@@ -163,4 +163,4 @@ kingsmen-finance/
 ---
 
 ## License
-MIT — Kingsmen Finance, Port Moresby, Papua New Guinea
+MIT — Our Finance, Port Moresby, Papua New Guinea
