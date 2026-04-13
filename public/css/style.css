@@ -471,3 +471,97 @@ tbody td { padding: 16px; border-bottom: 1px solid var(--border); color: var(--t
 .btn-loader { display: none; }
 .btn-submit.loading .btn-loader { display: flex; }
 .btn-submit.loading #btn-text { display: none; }
+
+/* ── MULTI-FACET UI ── */
+.platform-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+.nav-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 10px 20px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-btn:hover { border-color: var(--accent-dim); color: var(--text); }
+.nav-btn.active {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.facet-section {
+  animation: fadeIn 0.4s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Portfolio Facet */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Engine Facet */
+.engine-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+}
+.policy-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.policy-item:last-child { border-bottom: none; }
+.policy-name { font-size: 13px; font-weight: 600; color: var(--text); }
+.policy-desc { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+.policy-val { font-family: var(--font-mono); font-size: 14px; color: var(--accent); font-weight: 700; }
+
+.code-block {
+  background: var(--dark);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+.code-block code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-dim);
+  line-height: 1.6;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.activity-table th, .activity-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.activity-table th {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
