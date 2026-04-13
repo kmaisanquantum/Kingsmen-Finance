@@ -485,7 +485,7 @@ function switchFacet(facet) {
     sec.classList.remove('active');
   });
   const activeSec = document.getElementById(`facet-${facet}`);
-  activeSec.style.display = facet === 'origination' ? '' : 'block';
+  activeSec.style.display = facet === 'client' ? '' : 'block';
   setTimeout(() => activeSec.classList.add('active'), 10);
 
   showToast(`Switched to ${facet.toUpperCase()} interface`);
@@ -503,7 +503,7 @@ function simulatePortfolio() {
   const statuses = ['APPROVED', 'APPROVED', 'DECLINED', 'APPROVED'];
 
   setInterval(() => {
-    if (document.getElementById('facet-portfolio').style.display === 'none') return;
+    if (document.getElementById('facet-firm').style.display === 'none') return;
 
     const name = names[Math.floor(Math.random() * names.length)];
     const amount = amounts[Math.floor(Math.random() * amounts.length)];

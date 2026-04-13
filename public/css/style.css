@@ -565,3 +565,11 @@ tbody td { padding: 16px; border-bottom: 1px solid var(--border); color: var(--t
   color: var(--text-muted);
   letter-spacing: 1px;
 }
+
+/* Persona specific tags */
+.badge-client { background: var(--accent-bg); color: var(--accent); }
+.badge-firm { background: var(--green-bg); color: var(--green); }
+.badge-admin { background: var(--red-bg); color: var(--red); }
+
+.facet-section.active { display: block !important; }
+#facet-client.facet-section.active { display: block !important; }

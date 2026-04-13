@@ -51,23 +51,61 @@
 <!-- ── APPLICATION SECTION ── -->
 <section class="app-section" id="application">
   <div class="platform-nav">
-    <button class="nav-btn active" id="nav-origination" onclick="switchFacet('origination')">
-      <span class="nav-icon">🎯</span> Origination
+    <button class="nav-btn active" id="nav-client" onclick="switchFacet('client')">
+      <span class="nav-icon">👤</span> Borrower Portal
     </button>
-    <button class="nav-btn" id="nav-portfolio" onclick="switchFacet('portfolio')">
-      <span class="nav-icon">📊</span> Portfolio
+    <button class="nav-btn" id="nav-firm" onclick="switchFacet('firm')">
+      <span class="nav-icon">🏦</span> Lender Dashboard
     </button>
-    <button class="nav-btn" id="nav-engine" onclick="switchFacet('engine')">
-      <span class="nav-icon">⚙️</span> Engine
+    <button class="nav-btn" id="nav-admin" onclick="switchFacet('admin')">
+      <span class="nav-icon">🛡️</span> Admin Console
     </button>
   </div>
 
   <div class="section-heading">
     <div class="section-tag">Platform Sandbox</div>
-    <h2>Experience the Infrastructure</h2>
+    <h2>Borrower Origination Portal</h2>
   </div>
 
-  <div id="facet-origination" class="facet-section active">
+  <div id="facet-client" class="facet-section active">
+
+    <div class="panel" style="margin-bottom: 32px; border-color: var(--accent-dim);">
+      <div class="panel-header">
+        <div class="panel-title">My Loan Portfolio</div>
+        <div class="panel-desc">Current financial standing with Our Finance</div>
+      </div>
+      <div class="panel-body" style="padding: 20px;">
+        <div class="stats-row" style="grid-template-columns: repeat(3, 1fr); border-bottom: none;">
+          <div class="stat-cell" style="padding: 10px 20px;">
+            <div class="stat-label">Active Loans</div>
+            <div class="stat-value" style="font-size: 18px;">1</div>
+          </div>
+          <div class="stat-cell" style="padding: 10px 20px;">
+            <div class="stat-label">Total Outstanding</div>
+            <div class="stat-value" style="font-size: 18px;">K1,420.50</div>
+          </div>
+          <div class="stat-cell" style="padding: 10px 20px; border-right: none;">
+            <div class="stat-label">Next Payment</div>
+            <div class="stat-value" style="font-size: 18px; color: var(--accent);">K185.20</div>
+            <div class="stat-sub">Due in 4 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom: 32px;">
+      <div class="panel-header">
+        <div class="panel-title">Client Profile</div>
+        <div class="panel-desc">Identity verified via AI-KYC</div>
+      </div>
+      <div class="panel-body" style="padding: 20px;">
+        <div class="kv-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="kv-item"><div class="kv-key">Name</div><div class="kv-val">Peter Kila Namaliu</div></div>
+          <div class="kv-item"><div class="kv-key">ID Status</div><div class="kv-val" style="color:var(--green)">VERIFIED</div></div>
+          <div class="kv-item"><div class="kv-key">Credit Score</div><div class="kv-val">A (Excellent)</div></div>
+        </div>
+      </div>
+    </div>
     <div class="app-grid">
 
     <!-- LEFT COLUMN -->
@@ -308,33 +346,33 @@
       </div>
 
     </div><!-- app-grid -->
-  </div><!-- facet-origination -->
+  </div><!-- facet-client -->
 
   <!-- PORTFOLIO FACET -->
-  <div id="facet-portfolio" class="facet-section" style="display:none">
+  <div id="facet-firm" class="facet-section" style="display:none">
     <div class="section-heading">
       <div class="section-tag">Portfolio Analytics</div>
-      <h2>Live Portfolio Performance</h2>
+      <h2>Lender Portfolio Analytics</h2>
     </div>
     <div class="portfolio-grid">
       <div class="panel">
         <div class="panel-body">
-          <div class="stat-label">Total Disbursed</div>
-          <div class="stat-value">K4,280,500</div>
+          <div class="stat-label">Capital Deployed</div>
+          <div class="stat-value">K4.28M</div>
           <div class="stat-sub">+12.5% from last month</div>
         </div>
       </div>
       <div class="panel">
         <div class="panel-body">
-          <div class="stat-label">Active Yield</div>
-          <div class="stat-value">22.4%</div>
+          <div class="stat-label">Net Interest Margin</div>
+          <div class="stat-value">18.2%</div>
           <div class="stat-sub">Annualized ROI</div>
         </div>
       </div>
       <div class="panel">
         <div class="panel-body">
-          <div class="stat-label">Default Rate</div>
-          <div class="stat-value">1.8%</div>
+          <div class="stat-label">NPL Ratio</div>
+          <div class="stat-value">1.85%</div>
           <div class="stat-sub">Below industry avg</div>
         </div>
       </div>
@@ -379,12 +417,69 @@
     </div>
   </div>
 
+
+    <div class="panel" style="margin-top: 32px;">
+      <div class="panel-header">
+        <div class="panel-title">Risk Distribution & Asset Quality</div>
+      </div>
+      <div class="panel-body">
+        <div style="display: flex; justify-content: space-around; align-items: center; padding: 20px 0;">
+          <div style="text-align: center;">
+            <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">LOW RISK</div>
+            <div style="width: 60px; height: 120px; background: var(--surface2); border: 1px solid var(--border); position: relative;">
+               <div style="position: absolute; bottom: 0; width: 100%; height: 75%; background: var(--green); opacity: 0.6;"></div>
+            </div>
+            <div style="margin-top: 8px; font-weight: 700;">75%</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">MEDIUM RISK</div>
+            <div style="width: 60px; height: 120px; background: var(--surface2); border: 1px solid var(--border); position: relative;">
+               <div style="position: absolute; bottom: 0; width: 100%; height: 20%; background: var(--accent); opacity: 0.6;"></div>
+            </div>
+            <div style="margin-top: 8px; font-weight: 700;">20%</div>
+          </div>
+          <div style="text-align: center;">
+            <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 8px;">HIGH RISK</div>
+            <div style="width: 60px; height: 120px; background: var(--surface2); border: 1px solid var(--border); position: relative;">
+               <div style="position: absolute; bottom: 0; width: 100%; height: 5%; background: var(--red); opacity: 0.6;"></div>
+            </div>
+            <div style="margin-top: 8px; font-weight: 700;">5%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <!-- ENGINE FACET -->
-  <div id="facet-engine" class="facet-section" style="display:none">
+  <div id="facet-admin" class="facet-section" style="display:none">
     <div class="section-heading">
       <div class="section-tag">Core Config</div>
-      <h2>Underwriting Engine Policy</h2>
+      <h2>System Administration & Control</h2>
     </div>
+
+      <div class="portfolio-grid" style="margin-bottom: 32px;">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="stat-label">API Requests (24h)</div>
+            <div class="stat-value">12,402</div>
+            <div class="stat-sub">99.9% success rate</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="stat-label">AI Processing Time</div>
+            <div class="stat-value">1.4s</div>
+            <div class="stat-sub">Median latency</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-body">
+            <div class="stat-label">Infrastructure Load</div>
+            <div class="stat-value">14%</div>
+            <div class="stat-sub">Resource utilization</div>
+          </div>
+        </div>
+      </div>
+
 
     <div class="engine-layout">
       <div class="panel">
@@ -441,6 +536,46 @@ if (docExpired) {
         </div>
       </div>
     </div>
+
+      <div class="panel" style="margin-top: 32px;">
+        <div class="panel-header">
+          <div class="panel-title">Audit Logs & System Health</div>
+        </div>
+        <div class="panel-body">
+          <div class="table-wrap">
+            <table class="activity-table">
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>Actor</th>
+                  <th>Status</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Risk Policy Update</td>
+                  <td>System Admin</td>
+                  <td><span class="adj-tag" style="background:var(--green-bg); color:var(--green); border-color:var(--green)">SUCCESS</span></td>
+                  <td class="col-dim">10:45 AM</td>
+                </tr>
+                <tr>
+                  <td>API Key Rotation</td>
+                  <td>Security Bot</td>
+                  <td><span class="adj-tag" style="background:var(--green-bg); color:var(--green); border-color:var(--green)">SUCCESS</span></td>
+                  <td class="col-dim">09:12 AM</td>
+                </tr>
+                <tr>
+                  <td>Ledger Sync</td>
+                  <td>Cron Job</td>
+                  <td><span class="adj-tag" style="background:var(--green-bg); color:var(--green); border-color:var(--green)">SUCCESS</span></td>
+                  <td class="col-dim">08:00 AM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
   </div>
 
   </div>
