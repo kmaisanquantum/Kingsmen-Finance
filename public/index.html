@@ -50,12 +50,25 @@
 
 <!-- ── APPLICATION SECTION ── -->
 <section class="app-section" id="application">
+  <div class="platform-nav">
+    <button class="nav-btn active" id="nav-origination" onclick="switchFacet('origination')">
+      <span class="nav-icon">🎯</span> Origination
+    </button>
+    <button class="nav-btn" id="nav-portfolio" onclick="switchFacet('portfolio')">
+      <span class="nav-icon">📊</span> Portfolio
+    </button>
+    <button class="nav-btn" id="nav-engine" onclick="switchFacet('engine')">
+      <span class="nav-icon">⚙️</span> Engine
+    </button>
+  </div>
+
   <div class="section-heading">
     <div class="section-tag">Platform Sandbox</div>
     <h2>Experience the Infrastructure</h2>
   </div>
 
-  <div class="app-grid">
+  <div id="facet-origination" class="facet-section active">
+    <div class="app-grid">
 
     <!-- LEFT COLUMN -->
     <div class="col-left">
@@ -294,7 +307,141 @@
         </div>
       </div>
 
+    </div><!-- app-grid -->
+  </div><!-- facet-origination -->
+
+  <!-- PORTFOLIO FACET -->
+  <div id="facet-portfolio" class="facet-section" style="display:none">
+    <div class="section-heading">
+      <div class="section-tag">Portfolio Analytics</div>
+      <h2>Live Portfolio Performance</h2>
     </div>
+    <div class="portfolio-grid">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="stat-label">Total Disbursed</div>
+          <div class="stat-value">K4,280,500</div>
+          <div class="stat-sub">+12.5% from last month</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="stat-label">Active Yield</div>
+          <div class="stat-value">22.4%</div>
+          <div class="stat-sub">Annualized ROI</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="stat-label">Default Rate</div>
+          <div class="stat-value">1.8%</div>
+          <div class="stat-sub">Below industry avg</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:32px">
+      <div class="panel-header">
+        <div class="panel-title">Recent Activity</div>
+      </div>
+      <div class="table-wrap">
+        <table class="activity-table">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="portfolio-activity">
+            <tr>
+              <td>John S. Kabui</td>
+              <td>K1,500.00</td>
+              <td><span class="adj-tag" style="background:var(--green-bg); color:var(--green); border-color:var(--green)">APPROVED</span></td>
+              <td class="col-dim">2 mins ago</td>
+            </tr>
+            <tr>
+              <td>Sarah Maru</td>
+              <td>K2,500.00</td>
+              <td><span class="adj-tag" style="background:var(--green-bg); color:var(--green); border-color:var(--green)">APPROVED</span></td>
+              <td class="col-dim">15 mins ago</td>
+            </tr>
+            <tr>
+              <td>David G.</td>
+              <td>K800.00</td>
+              <td><span class="adj-tag" style="background:var(--red-bg); color:var(--red); border-color:var(--red)">DECLINED</span></td>
+              <td class="col-dim">1 hour ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGINE FACET -->
+  <div id="facet-engine" class="facet-section" style="display:none">
+    <div class="section-heading">
+      <div class="section-tag">Core Config</div>
+      <h2>Underwriting Engine Policy</h2>
+    </div>
+
+    <div class="engine-layout">
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Global Risk Policies</div>
+        </div>
+        <div class="panel-body">
+          <div class="policy-item">
+            <div class="policy-info">
+              <div class="policy-name">Max Debt-to-Income Ratio</div>
+              <div class="policy-desc">Maximum percentage of net pay allowed for fortnightly repayment.</div>
+            </div>
+            <div class="policy-val">30%</div>
+          </div>
+          <div class="policy-item">
+            <div class="policy-info">
+              <div class="policy-name">Annual Interest Rate</div>
+              <div class="policy-desc">Standard rate applied to all reducing balance products.</div>
+            </div>
+            <div class="policy-val">20%</div>
+          </div>
+          <div class="policy-item">
+            <div class="policy-info">
+              <div class="policy-name">Minimum Loan Principal</div>
+              <div class="policy-desc">Floor limit for any single origination.</div>
+            </div>
+            <div class="policy-val">K100</div>
+          </div>
+          <div class="policy-item">
+            <div class="policy-info">
+              <div class="policy-name">Maximum Loan Principal</div>
+              <div class="policy-desc">Ceiling limit for automated approval.</div>
+            </div>
+            <div class="policy-val">K2,500</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <div class="panel-title">Logic Visualizer</div>
+        </div>
+        <div class="panel-body">
+          <div class="code-block">
+            <pre><code>// Underwriting Logic
+if (debtRatio > MAX_RATIO) {
+  reducePrincipal(maxEMI);
+}
+if (docExpired) {
+  decline("ID_EXPIRED");
+}</code></pre>
+          </div>
+          <p class="field-hint">Rules are evaluated in real-time by the Our Finance Core API.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   </div>
 </section>

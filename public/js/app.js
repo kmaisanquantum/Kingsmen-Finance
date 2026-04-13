@@ -470,3 +470,59 @@ function showToast(msg, type = '') {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => { t.classList.remove('show'); }, 4000);
 }
+
+/**
+ * ── FACET SWITCHING ──
+ */
+function switchFacet(facet) {
+  // Update Buttons
+  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById(`nav-${facet}`).classList.add('active');
+
+  // Update Sections
+  document.querySelectorAll('.facet-section').forEach(sec => {
+    sec.style.display = 'none';
+    sec.classList.remove('active');
+  });
+  const activeSec = document.getElementById(`facet-${facet}`);
+  activeSec.style.display = facet === 'origination' ? '' : 'block';
+  setTimeout(() => activeSec.classList.add('active'), 10);
+
+  showToast(`Switched to ${facet.toUpperCase()} interface`);
+}
+
+/**
+ * ── PORTFOLIO SIMULATION ──
+ */
+function simulatePortfolio() {
+  const activity = document.getElementById('portfolio-activity');
+  if (!activity) return;
+
+  const names = ['Michael T.', 'Aria K.', 'Samuel W.', 'Lydia M.', 'Kila P.'];
+  const amounts = [500, 1200, 2000, 800, 2500];
+  const statuses = ['APPROVED', 'APPROVED', 'DECLINED', 'APPROVED'];
+
+  setInterval(() => {
+    if (document.getElementById('facet-portfolio').style.display === 'none') return;
+
+    const name = names[Math.floor(Math.random() * names.length)];
+    const amount = amounts[Math.floor(Math.random() * amounts.length)];
+    const status = statuses[Math.floor(Math.random() * statuses.length)];
+    const statusClass = status === 'APPROVED' ? 'background:var(--green-bg); color:var(--green); border-color:var(--green)' : 'background:var(--red-bg); color:var(--red); border-color:var(--red)';
+
+    const row = document.createElement('tr');
+    row.style.animation = 'fadeIn 0.5s ease-out';
+    row.innerHTML = `
+      <td>${name}</td>
+      <td>K${amount.toFixed(2)}</td>
+      <td><span class="adj-tag" style="${statusClass}">${status}</span></td>
+      <td class="col-dim">Just now</td>
+    `;
+
+    activity.insertBefore(row, activity.firstChild);
+    if (activity.children.length > 8) activity.removeChild(activity.lastChild);
+  }, 8000);
+}
+
+// Initialize simulation
+simulatePortfolio();
